@@ -3,25 +3,23 @@ setlocal
 cd /d "%~dp0"
 
 echo ===================================================
-echo   Baidu Pan Extension - One-Click Packaging Tool
+echo   Baidu Pan Extension - Packaging Tool
 echo ===================================================
 echo.
 
-set "OUTPUT_ZIP=BaiduPanExtension_v1.0.zip"
+set "ZIP_NAME=BaiduPanExtension_v1.0.zip"
 
-if exist "%OUTPUT_ZIP%" del /f /q "%OUTPUT_ZIP%"
+echo Creating zip archive...
+powershell -NoProfile -Command "$ErrorActionPreference='SilentlyContinue'; $ProgressPreference='SilentlyContinue'; if (Test-Path '%ZIP_NAME%') { Remove-Item '%ZIP_NAME%' -Force -ErrorAction SilentlyContinue }; Compress-Archive -Path manifest.json, content.js, content.css, inject.js, deleter.js, popup, README.md -DestinationPath '%ZIP_NAME%' -Force"
 
-echo Packaging Chrome Extension files...
-echo.
-
-tar.exe -a -c -f "%OUTPUT_ZIP%" manifest.json content.js content.css inject.js deleter.js popup README.md
-
-if %ERRORLEVEL% equ 0 (
+if exist "%ZIP_NAME%" (
+    echo.
     echo ===================================================
-    echo  [SUCCESS] Extension zip created successfully!
-    echo  [ZIP PATH] %CD%\%OUTPUT_ZIP%
+    echo  [SUCCESS] Extension zipped successfully!
+    echo  [LOCATION] %CD%\%ZIP_NAME%
     echo ===================================================
 ) else (
+    echo.
     echo ===================================================
     echo  [ERROR] Packaging failed!
     echo ===================================================
