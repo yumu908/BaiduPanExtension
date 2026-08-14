@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百度网盘重复文件清理助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="title-group">
+        <div class="logo">🗑️</div>
+        <div>
+          <h2>百度网盘重复清理助手</h2>
+          <span class="sub-title">免 VIP 限制 · 免费批量删除</span>
+        </div>
+      </div>
+      <span class="version-badge">v1.0</span>
+    </div>
+
+    <!-- Usage Steps Card -->
+    <div class="card">
+      <div class="card-title">📖 使用步骤</div>
+      <ol class="step-list">
+        <li>打开 <a href="https://pan.baidu.com/disk/main" target="_blank" id="open-baidu-link">百度网盘网页版</a> 并登录。</li>
+        <li>进入顶部的 <strong>「垃圾文件清理」</strong> &rarr; <strong>「重复文件」</strong>。</li>
+        <li>点击百度网盘自带的 <strong>「智能选择」</strong> 勾选想要删除的重复项。</li>
+        <li>点击网页右下角的 <strong>「🚀 免VIP一键删除」</strong> 悬浮按钮即可！</li>
+      </ol>
+    </div>
+
+    <!-- Quick Manual Tool -->
+    <div class="card">
+      <div class="card-title">⚡ 快捷文件删除工具</div>
+      <p class="hint">如果在网页端没有检测到自动按钮，可将文件绝对路径粘贴到下方（多项换行）：</p>
+      <textarea id="manual-paths" placeholder="/我的资源/重复文件1.rar&#10;/我的资源/重复文件2.rar"></textarea>
+      
+      <div class="input-group">
+        <label for="bdstoken-input">bdstoken (留空则自动获取):</label>
+        <input type="text" id="bdstoken-input" placeholder="自动识别当前网盘凭证...">
+      </div>
+
+      <button id="popup-start-delete" class="btn primary-btn">
+        🚀 执行免VIP批量删除
+      </button>
+    </div>
+
+    <!-- Status / Log Output -->
+    <div id="popup-status-card" class="card hidden">
+      <div class="card-title">📊 执行状态</div>
+      <div class="progress-bar-bg">
+        <div id="popup-progress-fill" class="progress-bar-fill"></div>
+      </div>
+      <div id="popup-log" class="log-box"></div>
+    </div>
+
+    <div class="footer">
+      <span>安全说明：删除的文件将正常存放在网盘回收站内，可恢复。</span>
+    </div>
+  </div>
+
+  <script src="../deleter.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

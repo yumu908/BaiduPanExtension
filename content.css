@@ -1,0 +1,248 @@
+/* 百度网盘重复文件清理增强插件 UI 样式 */
+
+#bdp-cleaner-floating-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 102, 255, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15), 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #1f2937;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#bdp-cleaner-floating-bar:hover {
+  box-shadow: 0 14px 40px rgba(0, 51, 102, 0.22);
+  transform: translateY(-2px);
+}
+
+.bdp-cleaner-badge {
+  background: linear-gradient(135deg, #0066ff, #0052cc);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 102, 255, 0.3);
+}
+
+.bdp-cleaner-btn {
+  background: linear-gradient(135deg, #0066ff 0%, #0044cc 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.25);
+  outline: none;
+}
+
+.bdp-cleaner-btn:hover {
+  background: linear-gradient(135deg, #1a75ff 0%, #0052cc 100%);
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 102, 255, 0.35);
+}
+
+.bdp-cleaner-btn:active {
+  transform: scale(0.98);
+}
+
+.bdp-cleaner-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+}
+
+.bdp-cleaner-btn-secondary:hover {
+  background: #e5e7eb;
+  color: #111827;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bdp-cleaner-btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.bdp-cleaner-btn-danger:hover {
+  background: linear-gradient(135deg, #f87171 0%, #b91c1c 100%);
+}
+
+.bdp-cleaner-count-info {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.bdp-cleaner-count-num {
+  color: #0066ff;
+  font-weight: 700;
+}
+
+/* 模态弹窗 Modal */
+#bdp-cleaner-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 9999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  animation: bdpCleanerFadeIn 0.25s ease-out;
+}
+
+@keyframes bdpCleanerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#bdp-cleaner-modal-card {
+  background: #ffffff;
+  width: 540px;
+  max-width: 90vw;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: bdpCleanerSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bdpCleanerSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.bdp-cleaner-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+}
+
+.bdp-cleaner-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bdp-cleaner-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.bdp-cleaner-close-btn:hover {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.bdp-cleaner-progress-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bdp-cleaner-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0066ff 0%, #3b82f6 100%);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.bdp-cleaner-status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.bdp-cleaner-log-box {
+  background: #0f172a;
+  color: #38bdf8;
+  font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, monospace;
+  font-size: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  height: 180px;
+  overflow-y: auto;
+  line-height: 1.5;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.bdp-cleaner-log-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bdp-cleaner-log-box::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+.bdp-cleaner-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+/* 嵌入网页按钮指示器 */
+.bdp-cleaner-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 10px;
+  padding: 5px 12px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s;
+}
+
+.bdp-cleaner-inline-btn:hover {
+  background: linear-gradient(135deg, #34d399 0%, #047857 100%);
+  transform: translateY(-1px);
+}

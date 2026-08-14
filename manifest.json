@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "百度网盘重复文件一键清理助手 (免VIP)",
+  "version": "1.0.0",
+  "description": "专为百度网盘网页版设计的重复文件免费批量删除增强插件，打破VIP付费墙，一键清理重复文件。",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://pan.baidu.com/*",
+    "https://*.baidu.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "百度网盘重复文件清理助手"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://pan.baidu.com/*"
+      ],
+      "js": [
+        "inject.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://pan.baidu.com/*"
+      ],
+      "js": [
+        "deleter.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "inject.js",
+        "deleter.js"
+      ],
+      "matches": [
+        "https://pan.baidu.com/*"
+      ]
+    }
+  ]
+}
